@@ -49,6 +49,12 @@ ENV PATH=$ORACLE_HOME/bin:$ORACLE_HOME/OPatch/:/usr/sbin:$PATH \
     LD_LIBRARY_PATH=$ORACLE_HOME/lib:/usr/lib \
     CLASSPATH=$ORACLE_HOME/jlib:$ORACLE_HOME/rdbms/jlib
 
+###
+#USER root
+#RUN yum -y install vim
+#RUN yum -y install sudo
+#RUN echo 'oracle  ALL=(ALL:ALL) ALL' >> /etc/sudoers
+###
 # Copy files needed during both installation and runtime
 # -------------
 COPY $SETUP_LINUX_FILE $CHECK_SPACE_FILE $INSTALL_DIR/
