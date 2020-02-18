@@ -19,13 +19,14 @@ pipeline {
       }
     }
     
-    stage('Publish') {
+     stage('Publish') {
       steps {
           sh 'docker tag oracle/database:18.3.0-ee daniel570/oracledb:18.3.0-ee'
           withDockerRegistry(credentialsId: 'DockerHubCreds', url: 'https://index.docker.io/v1/') {
           sh 'docker push daniel570/oracledb:18.3.0-ee-mig'
         }
       }
+     }
       
       stage('Deploy') {
         steps {
@@ -34,4 +35,3 @@ pipeline {
       }
     }
   }
-]
