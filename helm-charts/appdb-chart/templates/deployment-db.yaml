@@ -18,7 +18,7 @@ spec:
       containers:
 #      - image: javiermugueta/oracledb
 #      - image: fra.ocir.io/<tenantname>/atrepo/orcldb:latest
-      - image: daniel570/oracledb:18.3.0-ee
+      - image: daniel570/oracledb:12.2.0.1
         name: orcldb
         ports:
         - containerPort: 1521
@@ -26,6 +26,8 @@ spec:
         volumeMounts:
         - name: data
           mountPath: /opt/oracle/oradata
+        - name: customscripts
+          mountPath: /opt/oracle/scrips/setup
       imagePullSecrets:
         - name: dockerstore
       securityContext:
@@ -36,3 +38,6 @@ spec:
         - name: data
           persistentVolumeClaim:
             claimName: data-pvc
+        - name: customscripts
+          hostPath:
+            path: /home/develeap/customscripts
