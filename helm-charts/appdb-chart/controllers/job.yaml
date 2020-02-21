@@ -1,0 +1,13 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: db-migrate
+spec:
+  template:
+    spec:
+      containers:
+      - name: db-migrate
+        image: daniel570/oracledb:instantclient-12.2.0.1
+        command: ["./check-db.sh"]
+      restartPolicy: Never
+  backoffLimit: 4
