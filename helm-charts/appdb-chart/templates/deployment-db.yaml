@@ -18,8 +18,8 @@ spec:
       initContainers:
       - name: initscripts
         image: daniel570/ubuntu:18.04-custom #daniel570/alpine:3.7-custom
-        command: ["/bin/bash","-c"] 
-        args: ["apt update; cd /home/oracle/customscripts; cp * /opt/oracle/scripts/setup; cp * /opt/oracle/scripts/startup"]
+        command: ["/bin/bash","-c"]
+        args: ["apt update; cd /home/oracle/customscripts; cp * /opt/oracle/scripts/setup; cp * /opt/oracle$
         volumeMounts:
         - mountPath: /opt/oracle/scripts/setup
           name: customscripts
